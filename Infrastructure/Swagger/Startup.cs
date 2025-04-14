@@ -8,7 +8,7 @@ namespace Infrastructure.Swagger;
 
 public static class Startup
 {
-    public const string ApplicationTitle = "Bar";
+    public const string ApplicationTitle = "WeddingApi";
     public const string AnonymousGroupName = "anonymous";
     public const string AuthorizedGroupName = "authorized";
     

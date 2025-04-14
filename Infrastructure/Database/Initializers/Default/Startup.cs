@@ -8,7 +8,7 @@ namespace Infrastructure.Database.Initializers.Default;
 
 public static class Startup
 {
-    public static async Task InitializeBarDatabase(this IServiceProvider services, CancellationToken cancellationToken = default)
+    public static async Task InitializeDatabase(this IServiceProvider services, CancellationToken cancellationToken = default)
     {
         using var scope = services.CreateScope();
         var seeder = scope.ServiceProvider.GetRequiredService<DataSeeder>();

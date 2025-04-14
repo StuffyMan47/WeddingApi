@@ -1,8 +1,8 @@
-using Bar.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using WeddingApi.Models;
 
-namespace Bar.Controllers.Base;
+namespace WeddingApi.Controllers.Base;
 
 [Route("api/[controller]")]
 [ApiController]

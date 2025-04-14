@@ -3,7 +3,7 @@ using Application.Extensions;
 using Application.Extensions.ActionResult;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Bar.Controllers.Base;
+namespace WeddingApi.Controllers.Base;
 
 [Route("api/[controller]")]
 [ApiController]

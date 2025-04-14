@@ -1,10 +1,10 @@
 ﻿networks:
-  bar-dev:
+  wedding-dev:
     driver: bridge
 
 services:
-  bar:
-    image: bar
+  wedding:
+    image: wedding
     environment:
       - ASPNETCORE_ENVIRONMENT=Production
     restart: always
@@ -12,7 +12,7 @@ services:
       context: .
       dockerfile: Api/Dockerfile
     networks:
-      - bar-dev
+      - wedding-dev
     depends_on:
       - postgres
              
@@ -20,13 +20,13 @@ services:
     image: postgres:16-alpine3.18
     restart: always
     environment:
-      POSTGRES_DB: "bar"
+      POSTGRES_DB: "wedding"
       POSTGRES_USER: "postgres"
       POSTGRES_PASSWORD: "admin"
     ports:
       - "5433:5432"
     networks:
-      - bar-dev
+      - wedding-dev
     volumes:
       - postgres-data:/var/lib/postgresql/data
 

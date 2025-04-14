@@ -1,5 +1,5 @@
 using Application.Extensions.ActionResult;
-using Bar.Models;
+using WeddingApi.Models;
 
 namespace Application.Extensions;
 

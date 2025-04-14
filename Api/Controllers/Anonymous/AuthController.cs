@@ -4,12 +4,12 @@ using Application.UseCase.User.Login;
 using Application.UseCase.User.Login.Models;
 using Application.UseCase.User.RefreshToken;
 using Application.UseCase.User.RefreshToken.Models;
-using Bar.Controllers.Base;
-using Bar.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using WeddingApi.Controllers.Base;
+using WeddingApi.Models;
 
-namespace Bar.Controllers.Anonymous;
+namespace WeddingApi.Controllers.Anonymous;
 
 public class AuthController : BaseController
 {

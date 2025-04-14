@@ -12,9 +12,9 @@ COPY ["Api/Api.csproj", "Api/"]
 COPY ["Infrastructure/Infrastructure.csproj", "Infrastructure/"]
 COPY ["Application/Application.csproj", "Application/"]
 
-RUN dotnet restore "Bar/Api/Api.csproj"
+RUN dotnet restore "WeddingApi/Api/Api.csproj"
 COPY . .
-WORKDIR "/src/Bar/Api"
+WORKDIR "/src/WeddingApi/Api"
 RUN dotnet build --no-restore "Api.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
 FROM build AS publish
@@ -27,4 +27,4 @@ COPY --from=publish /app/publish .
 
 RUN apt-get update 
 
-ENTRYPOINT ["dotnet", "Bar.dll"]
+ENTRYPOINT ["dotnet", "WeddingApi.dll"]

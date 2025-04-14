@@ -22,7 +22,7 @@ builder.Services.AddDbContext<AppDbContext>(
         options.UseNpgsql(builder.Configuration.GetConnectionString("DBConnectionString"));
     });
 
-await builder.Services.RegisterBarModule(builder.Configuration, builder.Environment);
+await builder.Services.RegisterWeddingModule(builder.Configuration, builder.Environment);
 
 var app = builder.Build();
 
@@ -43,7 +43,7 @@ app.MapControllers();
 
 app.Run();
 
-namespace Bar.Api
+namespace WeddingApi.Api
 {
     [SuppressMessage("Minor Code Smell", "S2094:Classes should not be empty")]
     public class Program;

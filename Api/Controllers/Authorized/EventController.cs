@@ -4,9 +4,9 @@ using Application.UseCase.Event.DeleteEvent;
 using Application.UseCase.Event.GetEvent;
 using Application.UseCase.Event.GetEventList;
 using Application.UseCase.Event.GetEventList.Models;
-using Bar.Controllers.Base;
-using Bar.Models;
 using Microsoft.AspNetCore.Mvc;
+using WeddingApi.Controllers.Base;
+using WeddingApi.Models;
 
 namespace Wedding.Controllers.Authorized;
 

@@ -6,9 +6,9 @@ using Application.UseCase.Place.GetPlacesList;
 using Application.UseCase.Place.GetPlacesList.Models;
 using Application.UseCase.Place.UpdatePlace;
 using Application.UseCase.Place.UpdatePlace.Models;
-using Bar.Controllers.Base;
-using Bar.Models;
 using Microsoft.AspNetCore.Mvc;
+using WeddingApi.Controllers.Base;
+using WeddingApi.Models;
 
 namespace Wedding.Controllers.Authorized;
 

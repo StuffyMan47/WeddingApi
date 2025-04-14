@@ -1,4 +1,4 @@
-namespace Bar.Models;
+namespace WeddingApi.Models;
 
 public class ApiResponseErrors
 {

@@ -7,9 +7,9 @@ using Application.UseCase.Guest.GetGuest;
 using Application.UseCase.Guest.GetGuest.Models;
 using Application.UseCase.Guest.GetGuestsList;
 using Application.UseCase.Guest.GetGuestsList.Models;
-using Bar.Controllers.Base;
-using Bar.Models;
 using Microsoft.AspNetCore.Mvc;
+using WeddingApi.Controllers.Base;
+using WeddingApi.Models;
 
 namespace Wedding.Controllers.Authorized;
 

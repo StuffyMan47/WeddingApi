@@ -5,25 +5,22 @@ using Application.Enums;
 using Application.Exception.Base;
 using Application.JsonSerialization;
 using Application.UseCase.User.Login.Models;
-using Bar.Api;
-using Bar.Models;
 using Infrastructure.Database.DbContext;
 using Infrastructure.Database.Initializers.Default;
 using Infrastructure.Database.Initializers.Seeders;
 using Infrastructure.Database.Tables.Users;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Identity.Data;
 using Microsoft.AspNetCore.Mvc.Testing;
-using Microsoft.AspNetCore.TestHost;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Testcontainers.PostgreSql;
 using Tests.Mocks;
+using WeddingApi.Models;
 using LoginRequest = Application.UseCase.User.Login.Models.LoginRequest;
 
 namespace Tests.Base;
 
-public partial class TestAppFactory: WebApplicationFactory<Bar.Api.Program>, IAsyncLifetime
+public partial class TestAppFactory: WebApplicationFactory<WeddingApi.Api.Program>, IAsyncLifetime
 {
     private PostgreSqlContainer Container { get; } = new PostgreSqlBuilder()
         .WithImage("postgres:16-alpine3.18")
@@ -57,7 +54,7 @@ public partial class TestAppFactory: WebApplicationFactory<Bar.Api.Program>, IAs
         var scope = Services.CreateScope();
         var seeder = scope.ServiceProvider.GetRequiredService<DataSeeder>();
 
-        await scope.ServiceProvider.InitializeBarDatabase();
+        await scope.ServiceProvider.InitializeDatabase();
 
         await CreateTestUsersAndSetTokens(seeder);
 

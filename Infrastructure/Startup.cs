@@ -15,7 +15,7 @@ namespace Infrastructure;
 
 public static class Startup
 {
-    public static async Task<IServiceCollection> RegisterBarModule(this IServiceCollection services, IConfiguration config, IWebHostEnvironment environment)
+    public static async Task<IServiceCollection> RegisterWeddingModule(this IServiceCollection services, IConfiguration config, IWebHostEnvironment environment)
     {
         Assembly[] assemblies =
         [
@@ -26,7 +26,7 @@ public static class Startup
         services.AddHttpContextAccessor();
         services.AddScoped<IUserContextProvider, UserContextProvider>();
         services.AddDataAccessLayer(config, environment);
-        services.AddBarApplicationLayer();
+        services.AddApplicationLayer();
         services.AddSingleton<IStorewebSettings, StorewebSettigns>();
 
         services.AddValidationBuilder();

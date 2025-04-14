@@ -22,7 +22,7 @@ namespace Application;
 
 public static class Startup
 {
-    public static IServiceCollection AddBarApplicationLayer(this IServiceCollection services)
+    public static IServiceCollection AddApplicationLayer(this IServiceCollection services)
     {
         services.AddScoped<LoginUseCase>();
         services.AddScoped<CreateUserUseCase>();

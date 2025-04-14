@@ -1,6 +1,6 @@
 using Application.Exception.Base;
 using Application.Extensions.HttpResponseDes;
-using Bar.Models;
+using WeddingApi.Models;
 
 namespace Tests.Base;
 
