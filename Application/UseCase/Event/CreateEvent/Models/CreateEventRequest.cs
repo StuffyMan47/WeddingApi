@@ -1,6 +1,6 @@
 ﻿namespace Application.UseCase.Event.CreateEvent.Models;
 
-public record struct CreateEventRequest(DateTime Date, string Description, string Newlyweds, long PlaceId, long OwnerId);
+public record struct CreateEventRequest(DateTime Date, string Description, string Newlyweds, string WelcomeSpeech, long PlaceId, long OwnerId, Guid UserId);
 
 public class CreateEventRequestValidator : AbstractValidator<CreateEventRequest>
 {
