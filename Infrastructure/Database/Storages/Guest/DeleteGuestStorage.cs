@@ -1,12 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Application.UseCase.Guest.DeleteGuest.Interfaces;
+using Infrastructure.Database.DbContext;
+using Microsoft.EntityFrameworkCore;
 
-namespace Infrastructure.Database.Storages.Guest
+namespace Infrastructure.Database.Storages.Guest;
+
+public class DeleteGuestStorage(AppDbContext dbContext) : IDeleteGuestStorage
 {
-    internal class DeleteGuestStorage
+    public async Task DeleteGuest(Guid id)
     {
+        await dbContext.Guests.Where(x=>x.Id == id).ExecuteDeleteAsync();
+
+        await dbContext.SaveChangesAsync();
     }
 }

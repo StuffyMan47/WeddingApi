@@ -1,12 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Application.UseCase.Guest.AddGuest.Interfaces;
+using Application.UseCase.Guest.AddGuest.Models;
+using Infrastructure.Database.DbContext;
 
-namespace Infrastructure.Database.Storages.Guest
+namespace Infrastructure.Database.Storages.Guest;
+
+public class AddGuestStorage(AppDbContext dbContext) : IAddGuestStorage
 {
-    internal class AddGuestStorage
+    public async Task AddGuest(AddGuestRequest request)
     {
+        dbContext.Guests.Add(new Tables.Guest.Guest
+        {
+            Name = request.Name,
+            IsCome = request.IsCome,
+            NeedTransfer = request.NeedTransfer,
+            CoupleName = request.Couple,
+            EventId = request.EventId,
+        });
+        await dbContext.SaveChangesAsync();
     }
 }

@@ -1,12 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Application.UseCase.Guest.GetGuest.Interfaces;
+using Application.UseCase.Guest.GetGuest.Models;
+using Infrastructure.Database.DbContext;
+using Microsoft.EntityFrameworkCore;
 
-namespace Infrastructure.Database.Storages.Guest
+namespace Infrastructure.Database.Storages.Guest;
+
+public class GetGuestStorage(AppDbContext dbContext) : IGetGuestStorage
 {
-    internal class GetGuestStorage
+    //TODO: Дописать запрос, уточнить параметры для фильтрации и модель ответа
+    public async Task<GetGuestResponse> GetGuest()
     {
+        return await dbContext.Guests
+            .Select(x => new GetGuestResponse
+            {
+                Name = x.Name,
+            }).FirstAsync();
     }
 }
