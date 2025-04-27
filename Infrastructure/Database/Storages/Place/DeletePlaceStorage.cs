@@ -1,12 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Application.UseCase.Place.DeletePlace.Interfaces;
+using Infrastructure.Database.DbContext;
+using Microsoft.EntityFrameworkCore;
 
-namespace Infrastructure.Database.Storages.Place
+namespace Infrastructure.Database.Storages.Place;
+
+public class DeletePlaceStorage(AppDbContext dbContext) : IDeletePlaceStorage
 {
-    internal class DeletePlaceStorage
+    public async Task DeletePlaceAsync(long placeId)
     {
+        await dbContext.Places
+            .Where(x=>x.Id == placeId)
+            .ExecuteDeleteAsync();
     }
 }

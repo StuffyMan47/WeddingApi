@@ -5,5 +5,5 @@ namespace Application.UseCase.Place.GetPlace.Interfaces;
 
 public interface IGetPlaceStorage : IScopedService
 {
-    Task<GetPlaceResponse> GetPlace(long placeId);
+    Task<GetPlaceResponse?> GetPlace(long placeId);
 }

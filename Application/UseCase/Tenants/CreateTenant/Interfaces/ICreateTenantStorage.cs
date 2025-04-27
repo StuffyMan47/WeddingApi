@@ -5,5 +5,5 @@ namespace Application.UseCase.Tenants.CreateTenant.Interfaces;
 
 public interface ICreateTenantStorage : IScopedService
 {
-    Task<int> CreateTenant(CreateTenantRequest request);
+    Task<long> CreateTenant(CreateTenantRequest request);
 }
