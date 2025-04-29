@@ -14,7 +14,7 @@ public class CreateUserUseCase(
     IPasswordService passwordService,
     IUserContextProvider userProvider)
 {
-    public async Task<Result<Guid>> CreateUser(CreateUserRequest request, int? tenantId = null, SystemRole role = SystemRole.Couple)
+    public async Task<Result<Guid>> CreateUser(CreateUserRequest request, SystemRole role = SystemRole.Couple)
     {
         bool isLoginTaken = await storage.IsLoginAlreadyTaken(request.Login);
         if (isLoginTaken)

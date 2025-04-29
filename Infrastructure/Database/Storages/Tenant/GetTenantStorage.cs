@@ -1,22 +1,30 @@
 ﻿using Application.UseCase.Tenants.GetTenant.Interfaces;
 using Application.UseCase.Tenants.GetTenant.Models;
+using Infrastructure.Database.DbContext;
+using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Database.Storages.Tenant;
 
-public class GetTenantStorage : IGetTenantsStorage
+public class GetTenantStorage(AppDbContext dbContext) : IGetTenantsStorage
 {
-    public Task<TenantModel?> GetTenantById(int id)
+    public async Task<TenantModel?> GetTenantById(int id)
     {
-        throw new NotImplementedException();
+        return await dbContext.Owners
+            .Select(x=> new TenantModel(x.Id, x.OwnerName, null))
+            .FirstOrDefaultAsync(x => x.Id == id);
     }
 
-    public Task<TenantModel?> GetTenantByName(string name)
+    public async Task<TenantModel?> GetTenantByName(string name)
     {
-        throw new NotImplementedException();
+        return await dbContext.Owners
+            .Select(x => new TenantModel(x.Id, x.OwnerName, null))
+            .FirstOrDefaultAsync(x => x.Name.Contains(name));
     }
 
-    public Task<List<TenantModel>> GetTenants()
+    public async Task<List<TenantModel>> GetTenants()
     {
-        throw new NotImplementedException();
+        return await dbContext.Owners
+            .Select(x => new TenantModel(x.Id, x.OwnerName, null))
+            .ToListAsync();
     }
 }

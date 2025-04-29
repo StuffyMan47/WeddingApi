@@ -31,7 +31,6 @@ public partial class DataSeeder
                 Gender = null,
                 BirthDate = null,
             },
-            tenant.Value.Id,
             SystemRole.System);
 
         return result.IsSuccess || result.Message == ErrorProvider.Users.LoginAlreadyTaken(SystemConstants.SystemLogin).Message
@@ -39,7 +38,7 @@ public partial class DataSeeder
             : result;
     }
 
-    public async Task<Result> CreateTenantSuperAdmin(int tenantId, string login, string password)
+    public async Task<Result> CreateTenantSuperAdmin(string login, string password)
     {
         var result = await createUser.CreateUser(new()
             {
@@ -51,7 +50,6 @@ public partial class DataSeeder
                 Gender = null,
                 BirthDate = null,
             },
-            tenantId,
             SystemRole.Admin);
 
         return result.IsSuccess || result.Message == ErrorProvider.Users.LoginAlreadyTaken(login).Message
@@ -62,8 +60,8 @@ public partial class DataSeeder
     public async Task<Result> CreateTestUser(
         string login,
         string password,
-        SystemRole systemRole,
-        int? tenantId = null)
+        SystemRole systemRole
+        )
     {
 
         var tenant = await getTenants.GetTenantByName(BaseConstants.RootTenantName);
@@ -80,7 +78,6 @@ public partial class DataSeeder
                 Gender = null,
                 BirthDate = null,
             },
-            tenantId ?? tenant.Value.Id,
             systemRole);
 
         return result.IsSuccess || result.Message == ErrorProvider.Users.LoginAlreadyTaken(login).Message
@@ -90,8 +87,8 @@ public partial class DataSeeder
 
     public async Task<Result> CreateImportUser(
         string login,
-        string password,
-        int? tenantId = null)
+        string password
+        )
     {
         Result<TenantModel> tenant = await getTenants.GetTenantByName(BaseConstants.RootTenantName);
         if (tenant.IsFailure)
@@ -106,8 +103,7 @@ public partial class DataSeeder
                 FatherName = null,
                 Gender = null,
                 BirthDate = null,
-            },
-            tenantId ?? tenant.Value.Id);
+            });
 
         return result.IsSuccess || result.Message == ErrorProvider.Users.LoginAlreadyTaken(login).Message
             ? Result.Success()
